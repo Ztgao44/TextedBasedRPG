@@ -1,4 +1,3 @@
-
 import java.util.Scanner;
 import java.util.Random;
 
@@ -24,14 +23,22 @@ public class TextBasedRPG {
     public static void intro()
     {
         typewriter("Our story begins here...");
+        typewriter()
+        typewriter("You have been in a relationship with your boyfriend for 3 years, but lately, things have changed.");
+        typewriter(text:"Alan,Ava,Sara,Kenzy, are our characters for our story")
+        typewriter("After a date where he seemed distant and practically ignored you, you decide to investigate.");
+        typewriter("You check his social media and take note of the women he's following...");
+        typewriter("Feeling suspicious, you gather your homegirls for a deep dive into his social media activity.");
+        typewriter("Together, you head to a function, where you mirror your phone to the TV and begin your investigation...");
+        typewriter("After some discussion, your group comes up with four different conclusions.");
 
-        //use typewriter( ) to print out the intro setup for your story.
+        makeDecision();
+        public static void firstChoice(){
+            system.out.print.
+    }
+    }
 
-        //1. tell us the lore of your world
-        //2. tell us who our character is
-        //3. let us input in a name for our character
-        //4. give us a quest
-        //5. it should end with a choice/decision
+    //5. it should end with a choice/decision
 
     }
 
@@ -47,4 +54,3 @@ public class TextBasedRPG {
         }
         System.out.println("");
     }
-}
