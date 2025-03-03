@@ -24,6 +24,9 @@ public class TextBasedRPG {
 
         // Asks for the player's name
         System.out.print("Enter your name: ");
+        inventory[0] = "Suspicious Typing Delay Screenshot";
+        inventory[1] = "Suspicious IG Story Screenshot";
+        inventory[2] = "Sara’s Weirdly Timed Text";
         playerName = scan.nextLine();
         typewriter("Welcome, " + playerName + "! Your quest begins now...");
         typewriter("You are a college student balancing classes, friendships, and your three-year relationship with Alan.");
@@ -50,7 +53,6 @@ public class TextBasedRPG {
         int choice = scan.nextInt();
         handleChoice(choice);
     }
-
     public static void handleChoice(int choice) {
         switch (choice) {
             case 1:
@@ -115,6 +117,7 @@ public class TextBasedRPG {
         typewriter("You now have " + gems + " gems left.");
     }
 
+
     public static void useItem() {
         System.out.println("Your inventory:");
         for (int i = 0; i < inventory.length; i++) {
@@ -122,37 +125,25 @@ public class TextBasedRPG {
                 System.out.println((i + 1) + ". " + inventory[i]);
             }
         }
-        System.out.print("Choose an item to use by number: ");
+        System.out.print("Choose an item to use by number, from 1 to 3: ");
         int itemChoice = scan.nextInt();
         if (itemChoice > 0 && itemChoice <= inventory.length && inventory[itemChoice - 1] != null) {
             String item = inventory[itemChoice - 1];
             switch (item) {
-                case "Emotional Support Texts":
-                    gems -= 5;
-                    typewriter("You text a supportive message to yourself, calming your nerves and getting the confidence you need.");
-                    break;
-                case "Secret Screenshots":
+                case "Suspicious Typing Delay Screenshot":
                     gems -= 10;
-                    typewriter("You reveal private conversations that give you more insight into Alan's behavior. You now have some leverage.");
+                    typewriter("You reveal a screenshot of Alan’s suspicious typing delay. This could be important.");
                     break;
-                case "Confidence Booster":
-                    gems -= 15;
-                    typewriter("You boost your confidence, preparing to confront Alan more boldly.");
+                case "Suspicious IG Story Screenshot":
+                    gems -= 10;
+                    typewriter("You reveal a screenshot of Alan’s suspicious Instagram story. Something doesn’t add up.");
                     break;
-                case "Mutual Friend Intel":
-                    gems -= 20;
-                    typewriter("You reach out to a mutual friend for some insight into Alan's actions.");
-                    break;
-                case "The Bold Text":
-                    gems -= 15;
-                    typewriter("You send a direct and dramatic message to Alan, demanding answers.");
-                    break;
-                case "Silence Shield":
+                case "Sara’s Weirdly Timed Text":
                     gems -= 5;
-                    typewriter("You decide to temporarily ignore Alan and buy yourself some time to think.");
+                    typewriter("You examine Sara's oddly-timed text to Alan. It's strange, but you decide to keep it in mind.");
                     break;
                 default:
-                    typewriter("This item cannot be used right now.");
+                    typewriter("This item cannot be applied right now.");
                     break;
             }
             inventory[itemChoice - 1] = null; // Use up the item
@@ -161,6 +152,7 @@ public class TextBasedRPG {
             useItem();
         }
     }
+
     public static void typewriter(String text) {
         int i;
         for (i = 0; i < text.length(); i++) {
