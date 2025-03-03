@@ -14,13 +14,15 @@ public class TextBasedRPG {
         scan.nextLine();
         intro();
     }
+
     public static void intro() {
         typewriter("Love isn’t just about romance—it’s about trust. And trust? It’s fragile.");
         typewriter("You live in a world where relationships are broadcasted on social media, where a simple 'goodnight' text can mean everything—or nothing.");
         typewriter("To the outside world, your relationship with Alan has been goals for three years. But lately? Something is wrong.");
         typewriter("It started small—shorter replies, canceled dates. Then it got worse. He avoids eye contact, laughs at his phone when you’re next to him, and the gut feeling won’t go away.");
         typewriter("Maybe you’re paranoid. Maybe you’re overthinking. Or maybe… you’re finally seeing the truth.");
-        //Asks for the player's name
+
+        // Asks for the player's name
         System.out.print("Enter your name: ");
         playerName = scan.nextLine();
         typewriter("Welcome, " + playerName + "! Your quest begins now...");
@@ -36,6 +38,7 @@ public class TextBasedRPG {
         typewriter("The room falls dead silent. Your stomach twists.");
         choicePhase();
     }
+
     public static void choicePhase() {
         typewriter("What will you do?");
         typewriter("1. Ava’s Advice – 'TEXT HIM NOW. Drop the screenshots, no warning. Make him explain himself!' (Cost: 10 gems)");
@@ -43,7 +46,6 @@ public class TextBasedRPG {
         typewriter("3. Ryan’s Advice – 'Ignore him. Stop texting. Act unbothered. If he cares, he’ll come crawling back to you in no time girl.' (Cost: 25 gems)");
         typewriter("4. Sara’s Advice – 'You’re overthinking this. Just let it go. If he’s hiding something, it’ll come out eventually.' (Cost: 5 gems)");
         typewriter("5. Use an Item from your Inventory");
-
         System.out.print("Enter the number of your choice: ");
         int choice = scan.nextInt();
         handleChoice(choice);
@@ -54,18 +56,22 @@ public class TextBasedRPG {
             case 1:
                 gems -= 10;
                 typewriter("You decided to text Alan immediately, dropping the screenshots and demanding an explanation.");
+                aftermathPhase();
                 break;
             case 2:
                 gems -= 15;
                 typewriter("You casually ask Alan why he's been acting weird on the date.");
+                aftermathPhase();
                 break;
             case 3:
                 gems -= 25;
                 typewriter("You ignore Alan, deciding to act unbothered and wait for him to come crawling.");
+                aftermathPhase();
                 break;
             case 4:
                 gems -= 5;
                 typewriter("You decide to let it go, trusting that if Alan is hiding something, it will come out eventually.");
+                aftermathPhase();
                 break;
             case 5:
                 useItem();
@@ -73,6 +79,37 @@ public class TextBasedRPG {
             default:
                 typewriter("Invalid choice. Please choose again.");
                 choicePhase();
+                return;
+        }
+        typewriter("You now have " + gems + " gems left.");
+    }
+    public static void aftermathPhase() {
+        typewriter("Your friends are watching. Every move counts.");
+        typewriter("Ava: 'Don’t let him weasel out. Keep hitting him with the facts!'");
+        typewriter("Ryan: 'Block him. Let him sweat. It’ll make him panic!'");
+
+        typewriter("What will you do now?");
+        typewriter("1. Ava’s Plan – Keep texting him. Hit him with facts. Don’t let him weasel out. (Cost: 10 gems)");
+        typewriter("2. Ryan’s Plan – Block him. Let him PANIC. (Cost: 20 gems)");
+
+        System.out.print("Enter the number of your choice: ");
+        int choice = scan.nextInt();
+        handleAftermathChoice(choice);
+    }
+    public static void handleAftermathChoice(int choice) {
+        switch (choice) {
+            case 1:
+                gems -= 10;
+                typewriter("You keep texting Alan, bombarding him with more questions. He starts to crack under the pressure.");
+                break;
+            case 2:
+                gems -= 20;
+                typewriter("You block Alan and wait. Minutes feel like hours as you watch him panic, texting you from a different number.");
+                // Add more choices
+                break;
+            default:
+                typewriter("Invalid choice. Please choose again.");
+                aftermathPhase();
                 return;
         }
         typewriter("You now have " + gems + " gems left.");
@@ -124,7 +161,6 @@ public class TextBasedRPG {
             useItem();
         }
     }
-
     public static void typewriter(String text) {
         int i;
         for (i = 0; i < text.length(); i++) {
